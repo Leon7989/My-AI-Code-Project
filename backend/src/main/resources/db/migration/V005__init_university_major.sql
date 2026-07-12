@@ -1,0 +1,40 @@
+CREATE TABLE university (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    public_id CHAR(26) NOT NULL,
+    national_code VARCHAR(32) NOT NULL,
+    canonical_name VARCHAR(255) NOT NULL,
+    province_code VARCHAR(32) NULL,
+    city_code VARCHAR(32) NULL,
+    institution_type VARCHAR(64) NULL,
+    ownership_type VARCHAR(64) NULL,
+    education_level VARCHAR(32) NULL,
+    is_985 BOOLEAN NOT NULL DEFAULT FALSE,
+    is_211 BOOLEAN NOT NULL DEFAULT FALSE,
+    is_double_first_class BOOLEAN NOT NULL DEFAULT FALSE,
+    status VARCHAR(32) NOT NULL,
+    created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    updated_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_university_public_id (public_id),
+    UNIQUE KEY uk_university_national_code (national_code),
+    KEY idx_university_location (province_code, city_code),
+    KEY idx_university_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE major (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    public_id CHAR(26) NOT NULL,
+    national_major_code VARCHAR(32) NOT NULL,
+    canonical_name VARCHAR(255) NOT NULL,
+    education_level VARCHAR(32) NOT NULL,
+    discipline_category_code VARCHAR(64) NULL,
+    major_category_code VARCHAR(64) NULL,
+    degree_type VARCHAR(64) NULL,
+    status VARCHAR(32) NOT NULL,
+    created_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    updated_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_major_public_id (public_id),
+    UNIQUE KEY uk_major_code_level (national_major_code, education_level),
+    KEY idx_major_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
