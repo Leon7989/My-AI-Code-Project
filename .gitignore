@@ -1,1 +1,15 @@
+# macOS
 .DS_Store
+**/.DS_Store
+
+# Obsidian local workspace
+.obsidian/
+**/.obsidian/
+# Generated archives
+*.zip
+# Step 8 visible delivery copies
+xinjiang-gaokao-volunteer/step8-skills-visible/.DS_Store
+xinjiang-gaokao-volunteer/step8-skills-visible/
+**/step8-skills-visible/
+xinjiang-gaokao-volunteer/docs/00-progress-tracker.updated.md
+xinjiang-gaokao-volunteer/docs/step8-codex-skills/
